@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Portal TIP ULM 2025 - Agricultural Technology</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <script src="tailwind-config.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative min-h-screen loading-active">
+
+    <audio id="intro-bgm" preload="auto">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <div id="ai-glow" class="ai-glow-overlay"></div>
+    
+    <div id="birthday-result" class="birthday-result-modal">
+        <div id="birthday-content">
+            </div>
+    </div>
+
+    <button onclick="triggerBirthdayCheck()" class="floating-birth-btn group">
+        <i class="fa-solid fa-cake-candles text-white text-2xl"></i>
+        <span class="birth-tooltip">WhoBirthToday?</span>
+    </button>
+    <div class="intro-loader-wrapper" id="intro-loader">
+        <div class="loader-screen">
+            <img src="https://image2url.com/r2/default/gifs/1773505858649-e2f1bb98-6c1a-438d-9551-90f4108f9639.gif" class="loader-gif" alt="Loading Agronity">
+        </div>
+
+        <div class="wipe-overlay"></div>
+
+        <div class="final-screen">
+            <div class="logo-wrapper">
+                <div class="tagline">Team Media Creative</div>
+                
+                <div class="flex items-center gap-2 md:gap-4 mt-4">
+                    
+                    <img src="https://image2url.com/r2/default/images/1771202156309-5a871b50-95dc-4ef2-930b-ed8f94f23541.png" 
+                         class="intro-logo-img" 
+                         alt="Agronity Logo Intro">
+                    
+                    <div class="main-logo">
+                        <span class="shimmer-text">agr</span>
+                        
+                        <svg class="gear-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M95.6,41.9l-11-1.6c-0.7-2.5-1.7-4.8-2.9-7l7.2-8.5c1-1.2,0.9-3-0.2-4.1l-6.1-6.1c-1.1-1.1-2.9-1.2-4.1-0.2
+                            l-8.5,7.2c-2.2-1.2-4.5-2.2-7-2.9l-1.6-11c-0.2-1.6-1.5-2.7-3.1-2.7h-8.6c-1.6,0-2.9,1.2-3.1,2.7l-1.6,11c-2.5,0.7-4.8,1.7-7,2.9
+                            l-8.5-7.2c-1.2-1-3-0.9-4.1,0.2l-6.1,6.1c-1.1,1.1-1.2,2.9-0.2,4.1l7.2,8.5c-1.2,2.2-2.2,4.5-2.9,7l-11,1.6
+                            c-1.6,0.2-2.7,1.5-2.7,3.1v8.6c0,1.6,1.2,2.9,2.7,3.1l11,1.6c0.7,2.5,1.7,4.8,2.9,7l-7.2,8.5c-1,1.2-0.9,3,0.2,4.1l6.1,6.1
+                            c1.1,1.1,2.9,1.2,4.1,0.2l8.5-7.2c2.2,1.2,4.5,2.2,7,2.9l1.6,11c0.2,1.6,1.5,2.7,3.1,2.7h8.6c1.6,0,2.9-1.2,3.1-2.7l1.6-11
+                            c2.5-0.7,4.8-1.7,7-2.9l8.5,7.2c1.2,1,3,0.9,4.1-0.2l6.1-6.1c1.1-1.1,1.2-2.9,0.2-4.1l-7.2-8.5c1.2-2.2,2.2-4.5,2.9-7l11-1.6
+                            c1.6-0.2,2.7-1.5,2.7-3.1v-8.6C98.3,43.4,97.1,42.1,95.6,41.9z M50,65c-8.3,0-15-6.7-15-15s6.7-15,15-15s15,6.7,15,15S58.3,65,50,65z"/>
+                        </svg>
+
+                        <span class="shimmer-text">nit</span>
+
+                        <div class="letter-y shimmer-text">
+                            y
+                            <div class="pixel-grid">
+                                <div class="pixel-dot"></div>
+                                <div class="pixel-dot"></div>
+                                <div class="pixel-dot"></div>
+                                <div class="pixel-dot"></div>
+                                <div class="pixel-dot"></div>
+                                <div class="pixel-dot"></div>
+                            </div>
+                        </div>
+
+                        <span class="suffix shimmer-text">25</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="particles-container" class="fixed inset-0 pointer-events-none z-50"></div>
+
+    <nav class="fixed top-0 w-full z-40 glass-panel border-b-0 border-b-tipYellow/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="switchTab('beranda')">
+                    
+                    <img src="https://image2url.com/r2/default/images/1771202156309-5a871b50-95dc-4ef2-930b-ed8f94f23541.png" 
+                         class="h-10 w-10 object-contain drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]" 
+                         alt="Logo Agronity">
+
+                    <div>
+                        <h1 class="font-bold text-xl tracking-wider text-white">AGRONITY <span class="text-tipYellow text-glow">25</span></h1>
+                        <p class="text-[10px] text-gray-400 tracking-[0.2em]">TEKNOLOGI INDUSTRI PERTANIAN</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <button onclick="switchTab('beranda')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Beranda</button>
+                        <button onclick="switchTab('mengenal')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Mengenal TIP</button>
+                        <button onclick="switchTab('mahasiswa')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Mahasiswa</button>
+                        <button onclick="switchTab('agronews')" class="nav-btn px-3 py-2 rounded-md text-sm font-bold text-white bg-newsRed border border-red-500 shadow-[0_0_10px_rgba(204,0,0,0.5)] hover:shadow-[0_0_20px_rgba(204,0,0,0.7)] hover:scale-105 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-newspaper"></i> AgroNEWS
+                        </button>
+                        <button onclick="switchTab('apresiasi')" class="nav-btn px-3 py-2 rounded-md text-sm font-bold text-black bg-gradient-to-r from-yellow-400 to-orange-500 shadow-[0_0_15px_rgba(234,179,8,0.4)] hover:shadow-[0_0_25px_rgba(234,179,8,0.6)] hover:scale-105 transition-all transform flex items-center gap-2">
+                            <i class="fa-solid fa-trophy"></i> Apresiasi
+                        </button>
+                        <button onclick="switchTab('jadwal')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Jadwal</button>
+                        <button onclick="switchTab('simulasi')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Simulasi IPK</button>
+                        <button onclick="switchTab('dokumentasi')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Dokumentasi Agronity</button>
+                        <button onclick="switchTab('links')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-tipYellow hover:bg-white/5 transition-all">Layanan Agronity</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-tipYellow/20 pb-safe-area shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+        <div class="flex overflow-x-auto no-scrollbar py-2 px-2 gap-1 snap-x">
+            
+            <button onclick="switchTab('beranda')" class="bottom-nav-item active-nav group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-house text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Beranda</span>
+            </button>
+
+            <button onclick="switchTab('agronews')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-newspaper text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">News</span>
+            </button>
+            
+            <button onclick="switchTab('apresiasi')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-trophy text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Prestasi</span>
+            </button>
+
+            <button onclick="switchTab('mengenal')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-seedling text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Profil</span>
+            </button>
+
+            <button onclick="switchTab('mahasiswa')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-user-graduate text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Mhs</span>
+            </button>
+
+            <button onclick="switchTab('jadwal')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-regular fa-calendar-days text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Jadwal</span>
+            </button>
+
+            <button onclick="switchTab('simulasi')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-calculator text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">IPK</span>
+            </button>
+
+            <button onclick="switchTab('dokumentasi')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-camera-retro text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Dokum</span>
+            </button>
+
+            <button onclick="switchTab('links')" class="bottom-nav-item group flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-300 snap-center focus:outline-none">
+                <div class="mb-0.5 p-0.5 rounded-full group-active:scale-90 transition-transform">
+                    <i class="fa-solid fa-link text-lg mb-0 transition-colors"></i>
+                </div>
+                <span class="text-[9px] font-medium tracking-wide leading-none">Link</span>
+            </button>
+        </div>
+        <div class="absolute top-0 right-0 bottom-0 w-6 bg-gradient-to-l from-black/80 to-transparent pointer-events-none"></div>
+    </nav>
+
+    <main id="app" class="pt-24 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen mb-16 md:mb-0">
+
+        <section id="beranda" class="tab-content active">
+            
+            <div class="mb-6 widget-gold-shimmer rounded-[28px] p-5 md:p-6 relative overflow-hidden text-black shadow-xl">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex flex-col gap-1.5">
+                            <div class="flex items-center gap-1.5 bg-black/5 w-fit px-3 py-1.5 rounded-full border border-black/10 backdrop-blur-sm">
+                                <i class="fa-solid fa-location-dot text-black text-[10px]"></i>
+                                <span class="text-xs font-bold">Universitas Lambung Mangkurat</span>
+                            </div>
+                            <div id="widget-date" class="text-xs font-extrabold text-black/90 pl-1 drop-shadow-sm">
+                                Memuat tanggal...
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 rounded-[18px] bg-gradient-to-br from-yellow-200 to-yellow-500 shadow-inner border border-white/40 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-clock text-black/80 text-2xl"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1 mb-3">
+                        <h4 id="widget-status" class="text-black/70 font-bold tracking-widest text-[10px] uppercase">MENDETEKSI JADWAL...</h4>
+                        <h2 id="widget-course" class="text-3xl md:text-4xl font-black text-black leading-tight drop-shadow-sm">Memuat Data</h2>
+                        <p id="widget-ongoing-text" class="text-black/80 text-[11px] font-bold italic border-l-2 border-black/40 pl-2 mt-1 leading-snug">...</p>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <div id="widget-countdown" class="text-5xl md:text-6xl font-black text-black tracking-tighter drop-shadow-sm leading-none mt-1" style="font-family: 'Poppins', sans-serif;">
+                            --:--:-- <span class="text-base text-gray-800 tracking-normal font-bold">lagi</span>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <div id="widget-time-label" class="text-black font-bold text-[11px] bg-black/10 w-fit px-4 py-2 rounded-xl border border-black/10 backdrop-blur-sm shadow-inner">
+                                --:--
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-1.5 bg-black/15 rounded-full mt-4 relative shadow-inner">
+                        <div id="widget-progress-bar" class="absolute top-0 left-0 h-full bg-gradient-to-r from-green-600 to-green-400 w-0 transition-all duration-1000 ease-linear rounded-full shadow-[0_0_10px_rgba(34,197,94,0.6)]">
+                            <div class="absolute top-1/2 -right-2 transform -translate-y-1/2 flex items-center justify-center">
+                                <div class="absolute w-4 h-4 bg-green-400 rounded-full animate-ping opacity-60"></div>
+                                <div class="absolute w-6 h-6 bg-yellow-400 blur-[4px] opacity-70 mix-blend-screen rounded-full progress-spark-fire"></div>
+                                <div class="w-2.5 h-2.5 bg-white rounded-full z-10 shadow-[0_0_8px_#ffffff]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative rounded-3xl overflow-hidden glass-panel h-[80vh] flex items-center justify-center text-center p-6 border-tipYellow/50 shadow-[0_0_50px_rgba(234,179,8,0.1)]">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://image2url.com/r2/default/images/1770952078547-727f18b1-0d3e-4829-8283-b21986d79eb7.jpeg" class="w-full h-full object-cover opacity-30" alt="Agriculture Tech">
+                    <div class="absolute inset-0 bg-gradient-to-t from-tipBlack via-tipBlack/80 to-transparent"></div>
+                </div>
+
+                <div class="relative z-10 max-w-4xl mx-auto space-y-6">
+                    <div class="inline-block px-4 py-1 rounded-full border border-tipYellow/50 bg-tipYellow/10 text-tipYellow text-sm font-semibold tracking-wide mb-4 animate-pulse">
+                        DIKELOLA OLEH TMC AGRONITY25
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight">
+                        PORTAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 text-glow">RESMI</span><br> AGRONITY25
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                        Program Studi Teknologi Industri Pertanian Universitas Lambung Mangkurat. KHUSUS ANGKATAN 2025.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                        <button onclick="switchTab('agronews')" class="px-8 py-3 rounded-xl bg-newsRed text-white font-bold text-lg hover:bg-red-700 hover:shadow-[0_0_20px_rgba(220,38,38,0.6)] transition-all transform hover:-translate-y-1 flex items-center gap-2 justify-center">
+                            <i class="fa-solid fa-newspaper"></i> Baca Berita
+                        </button>
+                        <a href="http://pmb.ulm.ac.id" target="_blank" class="px-8 py-3 rounded-xl glass-panel text-white font-bold text-lg hover:bg-white/10 hover:border-tipYellow transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            Daftar Sekarang <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="glass-panel p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl font-bold text-tipYellow mb-2">A</div>
+                    <p class="text-gray-400">Akreditasi Nasional BAN-PT</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl font-bold text-tipYellow mb-2">ASIIN</div>
+                    <p class="text-gray-400">Akreditasi Internasional (Jerman)</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl font-bold text-tipYellow mb-2">60+</div>
+                    <p class="text-gray-400">Mahasiswa Baru 2025</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="agronews" class="tab-content">
+             <div class="glass-panel border-b-2 border-newsRed mb-6 rounded-lg overflow-hidden flex items-center h-12 shadow-lg">
+                <div class="bg-newsRed h-full px-4 flex items-center font-bold text-white z-10 shrink-0 italic tracking-wider">
+                    BREAKING NEWS
+                </div>
+                <div class="news-ticker-wrap bg-tipDark w-full border-l border-white/10">
+                    <div class="news-ticker text-sm text-gray-200 py-3 font-semibold" id="news-ticker-content">
+                        Memuat data berita terkini...
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <div class="lg:col-span-2 space-y-8">
+                    <div id="hero-news" class="relative h-[450px] rounded-xl overflow-hidden group cursor-pointer border border-gray-800 hover:border-newsRed transition-all shadow-2xl">
+                        <img id="hero-img" src="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="News">
+                        <div class="absolute inset-0 news-gradient"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full">
+                            <span id="hero-type" class="bg-newsRed text-white text-xs font-bold px-3 py-1 uppercase tracking-wider mb-3 inline-block rounded-sm">TERBARU</span>
+                            <h2 id="hero-title" class="font-news-headline text-3xl md:text-4xl font-bold text-white leading-tight mb-3 group-hover:text-tipYellow transition-colors">
+                                Loading News...
+                            </h2>
+                            <p id="hero-time" class="text-gray-400 text-sm flex items-center gap-2">
+                                <i class="fa-regular fa-clock"></i> <span id="hero-date">Just Now</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white border-l-4 border-newsRed pl-4">Berita Pilihan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="sub-news-container">
+                        </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="glass-panel p-6 rounded-xl border-t-4 border-tipYellow">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <span class="text-tipYellow">●</span> Market & Agro
+                        </h3>
+                        <div class="space-y-6" id="sidebar-news-container">
+                             </div>
+                    </div>
+
+                    <div class="relative overflow-hidden rounded-xl p-6 text-center border border-gray-700 group">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?q=80&w=600')] bg-cover opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div class="relative z-10">
+                            <h4 class="font-bold text-white text-xl mb-2 font-serif">Riset Lahan Basah</h4>
+                            <p class="text-gray-400 text-sm mb-4">Bergabunglah dengan tim riset unggulan TIP ULM.</p>
+                            <button onclick="switchTab('mengenal')" class="bg-tipYellow text-black px-6 py-2 rounded-full text-sm font-bold hover:bg-white transition-colors w-full">
+                                Info Selengkapnya
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="apresiasi" class="tab-content">
+             <div class="text-center mb-12 relative">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 mb-4 animate-pop-in">
+                    Agronity APRESIASI
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                    Wall of Fame: Mahasiswa Berprestasi Teknologi Industri Pertanian Angkatan 2025.
+                </p>
+                <i class="fa-solid fa-leaf absolute top-0 left-10 text-6xl text-green-500/20 animate-float"></i>
+                <i class="fa-solid fa-star absolute bottom-0 right-10 text-6xl text-yellow-500/20 animate-pulse-slow"></i>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+                
+                <div onclick="openApresiasiModal('khairul')" class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ring-1 ring-white/10 hover:ring-orange-500/50">
+                    <img src="https://image2url.com/r2/default/images/1771145722367-11351622-e57b-4628-a34f-591028bbe24e.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Khairul Photo">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-orange-600/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-orange-400/30 shadow-[0_0_10px_rgba(249,115,22,0.5)]">
+                            <i class="fa-solid fa-medal"></i> PORPROV
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="bg-black/40 backdrop-blur-xl border-l-4 border-orange-500 p-4 rounded-xl shadow-[0_0_30px_rgba(249,115,22,0.2)] group-hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-shadow">
+                            <h3 class="font-bold text-white text-lg leading-tight truncate">Khairul Hidayatullah</h3>
+                            <p class="text-orange-200 text-xs mt-1 line-clamp-1 font-medium"><i class="fa-solid fa-drum mr-1"></i> 8 Medali Drumband</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openApresiasiModal('amelia')" class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ring-1 ring-white/10 hover:ring-cyan-500/50">
+                    <img src="https://image2url.com/r2/default/images/1771146433079-501889f2-4607-4942-9e28-4f9fdbe0c6b6.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Amelia Photo">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-cyan-600/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-cyan-400/30 shadow-[0_0_10px_rgba(6,182,212,0.5)]">
+                            <i class="fa-solid fa-trophy"></i> KEJURPROV
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="bg-black/40 backdrop-blur-xl border-l-4 border-cyan-500 p-4 rounded-xl shadow-[0_0_30px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-shadow">
+                            <h3 class="font-bold text-white text-lg leading-tight truncate">Amelia Qalsyum J.</h3>
+                            <p class="text-cyan-200 text-xs mt-1 line-clamp-1 font-medium"><i class="fa-solid fa-table-tennis-paddle-ball mr-1"></i> Badminton PBSI Kalsel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openApresiasiModal('fauzia')" class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ring-1 ring-white/10 hover:ring-green-500/50">
+                    <img src="https://image2url.com/r2/default/images/1771146335811-6e61ae65-3091-4e2d-8184-ad8052e11d5a.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Fauzia Photo">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-green-600/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-green-400/30 shadow-[0_0_10px_rgba(34,197,94,0.5)] animate-pulse">
+                            <i class="fa-solid fa-flask"></i> PKM-RE 2026
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="bg-black/40 backdrop-blur-xl border-l-4 border-green-500 p-4 rounded-xl shadow-[0_0_30px_rgba(34,197,94,0.2)] group-hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-shadow">
+                            <h3 class="font-bold text-white text-lg leading-tight truncate">Fauzia Nazwa R.</h3>
+                            <p class="text-green-200 text-xs mt-1 line-clamp-1 font-medium"><i class="fa-solid fa-scroll mr-1"></i> Lolos PKM Tahap 2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openApresiasiModal('azwar')" class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ring-1 ring-white/10 hover:ring-purple-500/50">
+                    <img src="https://image2url.com/r2/default/images/1771201595091-b7a7a3ef-98c8-468c-b3f4-c1e4dd86328e.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Azwar Photo">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-purple-600/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-purple-400/30 shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+                            <i class="fa-solid fa-comments"></i> NUDC
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="bg-black/40 backdrop-blur-xl border-l-4 border-purple-500 p-4 rounded-xl shadow-[0_0_30px_rgba(168,85,247,0.2)] group-hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-shadow">
+                            <h3 class="font-bold text-white text-lg leading-tight truncate">M. Azwar Faisal</h3>
+                            <p class="text-purple-200 text-xs mt-1 line-clamp-1 font-medium"><i class="fa-solid fa-microphone-lines mr-1"></i> Seleksi Tingkat Univ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openApresiasiModal('faris')" class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ring-1 ring-white/10 hover:ring-teal-500/50">
+                    <img src="https://image2url.com/r2/default/images/1771152055207-8054e669-6067-4708-ae56-2540b042415f.jpeg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Faris Photo">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-teal-600/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-teal-400/30 shadow-[0_0_10px_rgba(20,184,166,0.5)]">
+                            <i class="fa-solid fa-gavel"></i> KDMI
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div class="bg-black/40 backdrop-blur-xl border-l-4 border-teal-500 p-4 rounded-xl shadow-[0_0_30px_rgba(20,184,166,0.2)] group-hover:shadow-[0_0_30px_rgba(20,184,166,0.5)] transition-shadow">
+                            <h3 class="font-bold text-white text-lg leading-tight truncate">Ahmad Faris Alzabar</h3>
+                            <p class="text-teal-200 text-xs mt-1 line-clamp-1 font-medium"><i class="fa-solid fa-scale-balanced mr-1"></i> Delegasi Fakultas</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="apresiasi-modal" class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center p-4">
+                <div class="modal-content bg-tipDark border border-tipYellow/50 rounded-3xl max-w-2xl w-full relative overflow-hidden shadow-[0_0_50px_rgba(234,179,8,0.3)]">
+                    <button onclick="closeApresiasiModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white bg-black/50 hover:bg-red-500/50 rounded-full w-8 h-8 flex items-center justify-center transition-all z-20">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    
+                    <div id="modal-body" class="p-8">
+                        </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="mengenal" class="tab-content">
+             <div class="space-y-12">
+                <div class="glass-panel p-8 rounded-3xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <i class="fa-solid fa-seedling text-9xl text-tipYellow"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-tipYellow mb-4 border-b border-gray-700 pb-2">Selayang Pandang</h2>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Program Studi Teknologi Industri Pertanian (TIP) merupakan bagian dari Fakultas Pertanian, Universitas Lambung Mangkurat. Kami berfokus pada integrasi ilmu pertanian dengan teknik industri dan manajemen untuk menciptakan nilai tambah pada hasil pertanian. Berdiri di jantung Kalimantan Selatan, TIP ULM memiliki keunggulan spesifik dalam pengembangan Agroindustri Lahan Basah, menjadikannya institusi yang relevan dalam menjawab tantangan pangan dan industri berkelanjutan di masa depan.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-panel p-8 rounded-3xl">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-certificate text-tipYellow"></i> Akreditasi
+                        </h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm text-gray-400">
+                                <thead class="bg-white/5 text-tipYellow uppercase">
+                                    <tr>
+                                        <th class="px-4 py-3">Jenis</th>
+                                        <th class="px-4 py-3">Status</th>
+                                        <th class="px-4 py-3">Lembaga</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-700">
+                                    <tr>
+                                        <td class="px-4 py-3">Nasional</td>
+                                        <td class="px-4 py-3 font-bold text-green-400">A</td>
+                                        <td class="px-4 py-3">BAN-PT</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3">Internasional</td>
+                                        <td class="px-4 py-3 font-bold text-blue-400">Full Accredited</td>
+                                        <td class="px-4 py-3">ASIIN (Jerman)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 p-4 bg-yellow-900/20 border-l-4 border-tipYellow rounded-r-lg">
+                            <p class="text-sm italic text-gray-300">
+                                "Akreditasi ASIIN membuktikan kurikulum dan lulusan kami diakui secara global sesuai standar kompetensi internasional."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-3xl">
+                        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-compass text-tipYellow"></i> Visi & Misi
+                        </h2>
+                        <div class="mb-4">
+                            <h3 class="font-bold text-tipYellow mb-1">VISI</h3>
+                            <p class="text-sm text-gray-300 italic">"Menjadi program studi yang unggul dan kompetitif di tingkat internasional dalam pengembangan ilmu pengetahuan dan teknologi agroindustri, khususnya pada lingkungan lahan basah yang berkelanjutan."</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-tipYellow mb-1">MISI</h3>
+                            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                                <li><strong class="text-white">Pendidikan:</strong> Menghasilkan sarjana profesional, inovatif & entrepreneur.</li>
+                                <li><strong class="text-white">Penelitian:</strong> Riset agroindustri berbasis potensi lokal.</li>
+                                <li><strong class="text-white">Pengabdian:</strong> Penerapan inovasi teknologi untuk masyarakat.</li>
+                                <li><strong class="text-white">Kerjasama:</strong> Membangun jejaring global & industri.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div class="glass-panel p-6 rounded-3xl hover:border-tipYellow transition-colors">
+                        <h3 class="text-xl font-bold text-tipYellow mb-4">Kurikulum Unggulan</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-flask text-green-400 mt-1"></i>
+                                <span class="text-gray-300">Rekayasa Bioproses & Mikrobiologi Industri</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-box-open text-blue-400 mt-1"></i>
+                                <span class="text-gray-300">Teknologi Pengemasan & Penyimpanan</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check-double text-purple-400 mt-1"></i>
+                                <span class="text-gray-300">Manajemen Mutu (ISO, HACCP, Halal)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-brands fa-envira text-green-500 mt-1"></i>
+                                <span class="text-gray-300">Teknologi Kelapa Sawit & Hilirisasi</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-3xl">
+                        <h3 class="text-xl font-bold text-tipYellow mb-4">Fasilitas Laboratorium</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=500&auto=format&fit=crop" class="rounded-lg object-cover h-32 w-full hover:opacity-80 transition-opacity" alt="Lab 1">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=500&auto=format&fit=crop" class="rounded-lg object-cover h-32 w-full hover:opacity-80 transition-opacity" alt="Lab 2">
+                        </div>
+                        <p class="text-xs text-center mt-2 text-gray-500">Laboratorium Terpadu & Rekayasa Sistem</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-8 rounded-3xl text-center">
+                    <h2 class="text-2xl font-bold text-white mb-6">Prospek Karir (S.T.P.)</h2>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-tipYellow/30 text-tipYellow font-semibold">Quality Assurance (QA/QC)</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-tipYellow/30 text-tipYellow font-semibold">R&D Manager</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-tipYellow/30 text-tipYellow font-semibold">Technopreneur</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-tipYellow/30 text-tipYellow font-semibold">Konsultan Agroindustri</span>
+                        <span class="px-4 py-2 rounded-full bg-white/5 border border-tipYellow/30 text-tipYellow font-semibold">ASN (Kementan/BRIN)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mahasiswa" class="tab-content">
+             <div class="max-w-md mx-auto mt-10">
+                <div id="login-container" class="glass-panel p-8 rounded-3xl border-t-4 border-t-tipYellow shadow-2xl">
+                    <div class="text-center mb-8">
+                        <i class="fa-solid fa-user-graduate text-5xl text-tipYellow mb-4 animate-bounce"></i>
+                        <h2 class="text-2xl font-bold text-white">Login Mahasiswa</h2>
+                        <p class="text-sm text-gray-400">Akses data akademik Anda</p>
+                    </div>
+                    
+                    <form onsubmit="handleLogin(event)" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Nama Lengkap</label>
+                            <input type="text" id="username" placeholder="Sesuai Data Pendaftaran" class="w-full px-4 py-3 rounded-xl custom-input" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Tanggal Lahir</label>
+                            <input type="date" id="password" class="w-full px-4 py-3 rounded-xl custom-input" required>
+                            <p class="text-xs text-gray-500 mt-1">Format: YYYY-MM-DD</p>
+                        </div>
+                        <button type="submit" class="w-full bg-tipYellow text-black font-bold py-3 rounded-xl hover:bg-yellow-400 hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] transition-all">
+                            LOGIN
+                        </button>
+                    </form>
+                    <p id="login-error" class="text-red-500 text-sm text-center mt-4 hidden">Data tidak ditemukan!</p>
+                </div>
+
+                <div id="profile-card" class="hidden glass-panel p-0 rounded-3xl overflow-hidden shadow-[0_0_30px_rgba(234,179,8,0.2)] animate-[fadeIn_0.5s_ease-out]">
+                    <div class="bg-gradient-to-r from-yellow-600 to-tipYellow h-32 relative">
+                        <div class="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                            <div class="w-24 h-24 rounded-full bg-black border-4 border-tipYellow flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user text-4xl text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-16 pb-8 px-6 text-center">
+                        <h2 id="profile-name" class="text-2xl font-bold text-white uppercase mb-1">Nama Mahasiswa</h2>
+                        <p class="text-tipYellow font-semibold tracking-widest">TEKNOLOGI INDUSTRI PERTANIAN</p>
+                        <p class="text-gray-500 text-sm mb-6">Angkatan 2025</p>
+
+                        <div class="grid grid-cols-2 gap-4 text-left bg-white/5 p-4 rounded-xl">
+                            <div>
+                                <p class="text-xs text-gray-500">Tempat Lahir</p>
+                                <p id="profile-pob" class="font-medium text-white">Banjarmasin</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Tanggal Lahir</p>
+                                <p id="profile-dob" class="font-medium text-white">2007-01-01</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Status</p>
+                                <p class="font-medium text-green-400">Aktif <i class="fa-solid fa-circle-check"></i></p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="handleLogout()" class="mt-6 w-full py-2 border border-red-500/50 text-red-400 rounded-lg hover:bg-red-500/10 transition-colors">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jadwal" class="tab-content">
+             <h2 class="text-3xl font-bold text-center text-tipYellow mb-8 text-glow">Jadwal Perkuliahan</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <button onclick="showSchedule(1)" class="p-4 glass-panel rounded-xl hover:bg-tipYellow hover:text-black transition-all font-bold group">
+                    Semester 1 <i class="fa-solid fa-arrow-right float-right opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </button>
+                <button onclick="showSchedule(2)" class="p-4 glass-panel rounded-xl hover:bg-tipYellow hover:text-black transition-all font-bold group relative overflow-hidden">
+                    <span class="relative z-10">Semester 2</span> 
+                    <i class="fa-solid fa-moon absolute -top-1 -right-1 text-tipYellow/20 text-4xl z-0 rotate-12"></i>
+                    <i class="fa-solid fa-arrow-right float-right opacity-0 group-hover:opacity-100 transition-opacity z-10 relative"></i>
+                </button>
+                
+                <button class="p-4 glass-panel rounded-xl opacity-50 cursor-not-allowed">Semester 3</button>
+                <button class="p-4 glass-panel rounded-xl opacity-50 cursor-not-allowed">Semester 4</button>
+                <button class="p-4 glass-panel rounded-xl opacity-50 cursor-not-allowed">Semester 5</button>
+                <button class="p-4 glass-panel rounded-xl opacity-50 cursor-not-allowed">Semester 6</button>
+                <button class="p-4 glass-panel rounded-xl opacity-50 cursor-not-allowed">Semester 7</button>
+                <button class="p-4 glass-panel rounded-xl opacity-50 cursor-not-allowed">Semester 8</button>
+            </div>
+
+            <div id="schedule-display" class="hidden">
+                </div>
+        </section>
+
+        <section id="simulasi" class="tab-content">
+             <div class="max-w-2xl mx-auto glass-panel p-6 rounded-3xl shadow-[0_0_40px_rgba(234,179,8,0.15)]">
+                <div class="flex items-center gap-4 mb-6">
+                    <i class="lucide-calculator w-10 h-10 text-tipYellow"></i>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Simulator IPK</h2>
+                        <p class="text-xs text-gray-400">Prediksi nasib akademikmu di sini.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 p-4 rounded-xl mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Nama Matkul</label>
+                        <input type="text" id="courseName" placeholder="Contoh: Kimia" class="w-full bg-black border border-gray-700 rounded px-3 py-2 text-sm focus:border-tipYellow outline-none text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">SKS</label>
+                        <input type="number" id="courseSks" placeholder="2" class="w-full bg-black border border-gray-700 rounded px-3 py-2 text-sm focus:border-tipYellow outline-none text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">Nilai</label>
+                        <select id="courseGrade" class="w-full bg-black border border-gray-700 rounded px-3 py-2 text-sm focus:border-tipYellow outline-none text-white">
+                            <option value="4.00">A (4.00)</option>
+                            <option value="3.75">A- (3.75)</option>
+                            <option value="3.50">B+ (3.50)</option>
+                            <option value="3.00">B (3.00)</option>
+                            <option value="2.75">B- (2.75)</option>
+                            <option value="2.50">C+ (2.50)</option>
+                            <option value="2.00">C (2.00)</option>
+                            <option value="1.00">D (1.00)</option>
+                            <option value="0.00">E (0.00)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button onclick="addCourse()" class="w-full border border-tipYellow text-tipYellow hover:bg-tipYellow hover:text-black font-semibold py-2 rounded-lg transition-all mb-6">
+                    <i class="fa-solid fa-plus"></i> Tambah Matkul
+                </button>
+
+                <div class="mb-6">
+                    <table class="w-full text-sm text-left text-gray-400">
+                        <thead class="text-xs uppercase bg-white/5 text-tipYellow">
+                            <tr>
+                                <th class="px-3 py-2">Matkul</th>
+                                <th class="px-3 py-2">SKS</th>
+                                <th class="px-3 py-2">Nilai</th>
+                                <th class="px-3 py-2">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseTableBody">
+                            </tbody>
+                    </table>
+                </div>
+
+                <div class="border-t border-gray-700 pt-6 text-center">
+                    <button onclick="calculateIPK()" class="bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-bold px-8 py-3 rounded-full shadow-[0_0_15px_rgba(250,204,21,0.5)] hover:scale-105 transition-transform">
+                        HITUNG IPK
+                    </button>
+                    
+                    <div id="resultArea" class="mt-8 hidden animate-bounce">
+                        <div class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400" id="finalIpk">0.00</div>
+                        <div class="text-sm text-gray-500 uppercase tracking-widest mb-4">Indeks Prestasi Kumulatif</div>
+                        
+                        <div class="glass-panel p-4 rounded-xl border-l-4 border-red-500 bg-red-900/10">
+                            <h4 class="text-red-400 font-bold mb-1">ROASTING AI:</h4>
+                            <p id="roastMessage" class="text-gray-300 italic">"..."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="dokumentasi" class="tab-content">
+             <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center text-tipYellow mb-8 text-glow">DOKUMENTASI 2025</h2>
+
+                <div id="doc-locked" class="glass-panel p-12 rounded-3xl text-center border-red-500/30">
+                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-red-900/20 mb-6 animate-pulse">
+                        <i class="fa-solid fa-lock text-5xl text-red-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Akses Dibatasi</h3>
+                    <p class="text-gray-300 max-w-lg mx-auto">
+                        "Harap Login terlebih dahulu agar dapat mengakses halaman ini, Sistem terIntegrasi dengan member Agronity25"
+                    </p>
+                    <button onclick="switchTab('mahasiswa')" class="mt-6 px-6 py-2 bg-tipYellow text-black font-bold rounded-full hover:bg-white transition-all">
+                        Login Sekarang
+                    </button>
+                </div>
+
+                <div id="doc-content" class="hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-pop-in">
+                    
+                    <a href="https://drive.google.com/drive/folders/16Ij8UKCvcsuGsSU7ijKGGPfE7obvjxM4" target="_blank" class="film-roll-btn p-8 rounded-xl flex flex-col items-center justify-center text-center group h-40">
+                        <i class="fa-solid fa-users text-4xl text-white mb-2 group-hover:text-tipYellow transition-colors"></i>
+                        <span class="text-xl font-bold text-white tracking-widest">LKMM</span>
+                        <span class="text-xs text-gray-400 mt-1">Klik untuk membuka Drive</span>
+                    </a>
+
+                    <a href="https://drive.google.com/drive/folders/14XCfVLPmO9xfJmWOUXR3QYF0R1UMeiFa" target="_blank" class="film-roll-btn p-8 rounded-xl flex flex-col items-center justify-center text-center group h-40">
+                        <i class="fa-solid fa-person-shelter text-4xl text-white mb-2 group-hover:text-tipYellow transition-colors"></i>
+                        <span class="text-xl font-bold text-white tracking-widest uppercase">Cikha Ruangan</span>
+                        <span class="text-xs text-gray-400 mt-1">Dokumentasi Indoor 2025</span>
+                    </a>
+
+                    <a href="https://drive.google.com/drive/folders/14RsZImzS8Hk--gMs_uBfiik7WauyczXU" target="_blank" class="film-roll-btn p-8 rounded-xl flex flex-col items-center justify-center text-center group h-40">
+                        <i class="fa-solid fa-bus text-4xl text-white mb-2 group-hover:text-tipYellow transition-colors"></i>
+                        <span class="text-xl font-bold text-white tracking-widest uppercase">Cikha Kunjungan</span>
+                        <span class="text-xs text-gray-400 mt-1">Dokumentasi Visit 2025</span>
+                    </a>
+
+                    <a href="https://drive.google.com/drive/folders/1nS12AeaGPAqhcgGk2akiqg4yd2qdqpBU?usp=sharing" target="_blank" class="film-roll-btn p-8 rounded-xl flex flex-col items-center justify-center text-center group h-40">
+                        <i class="fa-solid fa-tree text-4xl text-white mb-2 group-hover:text-tipYellow transition-colors"></i>
+                        <span class="text-xl font-bold text-white tracking-widest uppercase">Cikha Lapangan</span>
+                        <span class="text-xs text-gray-400 mt-1">Dokumentasi Outdoor 2025</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="links" class="tab-content">
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <a href="https://simari.ulm.ac.id/login/" target="_blank" class="group glass-panel p-8 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-blue-900/20 transition-all border-l-8 border-blue-500">
+                    <i class="fa-solid fa-graduation-cap text-5xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-bold text-white">SIMARI ULM</h3>
+                    <p class="text-sm text-gray-400 mt-2">Sistem Informasi Akademik Terpadu</p>
+                </a>
+
+                <a href="https://agrohub.faperta.ulm.ac.id/" target="_blank" class="group glass-panel p-8 rounded-3xl flex flex-col items-center justify-center text-center hover:bg-green-900/20 transition-all border-l-8 border-green-500">
+                    <i class="fa-solid fa-file-signature text-5xl text-green-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-2xl font-bold text-white">FAPERTA HUB</h3>
+                    <p class="text-sm text-gray-400 mt-2">Layanan Persuratan & Administrasi</p>
+                </a>
+
+                <a href="https://www.instagram.com/agronity.25" target="_blank" class="group glass-panel p-6 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition-all relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                    <i class="fa-brands fa-instagram text-5xl text-white z-10"></i>
+                    <div class="z-10">
+                        <h3 class="text-xl font-bold text-white">@agronity.25</h3>
+                        <p class="text-xs text-gray-300">Official Instagram Angkatan 2025</p>
+                    </div>
+                </a>
+
+                <a href="#" class="group glass-panel p-6 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition-all relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-red-500 opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                    <i class="fa-brands fa-tiktok text-5xl text-white z-10"></i>
+                    <div class="z-10">
+                        <h3 class="text-xl font-bold text-white">TikTok TIP</h3>
+                        <p class="text-xs text-gray-300">Dokumentasi Kegiatan & Keseruan</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="glass-panel mt-12 py-8 text-center text-gray-500 text-sm border-t border-tipYellow/20">
+        <p>&copy; 2025 Teknologi Industri Pertanian - Universitas Lambung Mangkurat.</p>
+        <p class="mt-2 text-xs">Developed with <i class="fa-solid fa-bolt text-tipYellow"></i> by TIP IT Division</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
