@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neo-bg: #050607;
+  --neo-surface: rgba(16, 18, 23, .80);
+  --neo-card: #11151b;
+  --neo-line: rgba(255,255,255,.10);
+  --neo-muted: #9ba3aa;
+  --neo-lime: #b6ff1d;
+  --neo-green: #28f27d;
+  --neo-yellow: #ffd233;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--neo-bg); }
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% -8%, rgba(182,255,29,.20), transparent 32%),
+    radial-gradient(circle at 88% 0%, rgba(40,242,125,.12), transparent 28%),
+    radial-gradient(circle at 50% 105%, rgba(255,210,51,.11), transparent 40%),
+    linear-gradient(145deg, #050607 0%, #090b0d 45%, #050607 100%);
+  color: #f7f7f2;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: radial-gradient(circle at top, black 0%, transparent 78%);
+}
+::selection { background: rgba(182,255,29,.35); color: white; }
+::-webkit-scrollbar { width: 8px; height: 6px; }
+::-webkit-scrollbar-track { background: #080a0c; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg,var(--neo-lime),var(--neo-green)); border-radius: 999px; }
+
+@layer components {
+  .glass-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.028)), var(--neo-surface);
+    border: 1px solid var(--neo-line);
+    box-shadow: 0 24px 70px rgba(0,0,0,.50), inset 0 1px 0 rgba(255,255,255,.08), inset 0 -1px 0 rgba(0,0,0,.35);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+  }
+  .neo-card {
+    @apply glass-panel rounded-[28px] p-5;
+  }
+  .neo-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-extrabold transition active:scale-[.98];
+    background: linear-gradient(135deg, var(--neo-lime), var(--neo-yellow));
+    color: #050607;
+    box-shadow: 0 12px 34px rgba(182,255,29,.22), inset 0 1px 0 rgba(255,255,255,.45);
+  }
+  .neo-btn-muted {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-bold text-white transition hover:bg-white/10 active:scale-[.98];
+  }
+  .neo-input {
+    @apply w-full rounded-2xl border border-white/10 bg-black/50 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-neoLime/70 focus:ring-4 focus:ring-neoLime/10;
+  }
+  .page-title { @apply text-3xl md:text-5xl font-black tracking-[-.06em] leading-none; }
+  .muted { color: var(--neo-muted); }
+}

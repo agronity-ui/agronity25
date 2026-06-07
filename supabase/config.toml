@@ -1,0 +1,4 @@
+project_id = "agronity25"
+
+[functions.streak-worker]
+verify_jwt = false

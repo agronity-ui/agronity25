@@ -1,0 +1,14 @@
+{
+  "name": "Agronity25",
+  "short_name": "Agronity25",
+  "description": "Portal resmi mahasiswa TIP ULM 2025",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#050607",
+  "theme_color": "#eab308",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "https://image2url.com/r2/default/images/1775039804162-457ef4f8-5b5d-46af-b13f-5da942fe6314.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "https://image2url.com/r2/default/images/1775039804162-457ef4f8-5b5d-46af-b13f-5da942fe6314.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

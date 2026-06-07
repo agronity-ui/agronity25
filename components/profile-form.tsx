@@ -1,0 +1,8 @@
+'use client';
+import { useEffect, useState } from 'react';
+import { createBrowserClient } from '@/lib/supabase/client';
+import { uploadToBucket } from '@/lib/upload';
+import { STORAGE_BUCKETS } from '@/lib/app';
+import { toast } from 'sonner';
+
+export function ProfileForm(){ const supabase=createBrowserClient(); const [p,setP]=useState<any>({}); const [file,setFile]=useState<File|null>(null); async function load(){const {data}=await supabase.from('profiles').select('*').maybeSingle(); setP(data||{})} useEffect(()=>{load()},[]); async function save(){try{ let avatar_url=p.avatar_url; if(file){ const up=await uploadToBucket(STORAGE_BUCKETS.avatars,file,'avatars',['image/'],5); avatar_url=up.publicUrl; } const {data:{user}}=await supabase.auth.getUser(); const {error}=await supabase.from('profiles').update({...p,avatar_url}).eq('id',user?.id); if(error) throw error; toast.success('Profil disimpan'); load();}catch(e:any){toast.error(e.message)}} return <div className="neo-card max-w-2xl"><h1 className="page-title">Profil</h1>{p.avatar_url&&<img src={p.avatar_url} className="mt-4 h-24 w-24 rounded-full object-cover"/>}<div className="mt-4 grid gap-3"><input className="neo-input" value={p.full_name||''} onChange={e=>setP({...p,full_name:e.target.value})} placeholder="Nama lengkap"/><input className="neo-input" value={p.username||''} onChange={e=>setP({...p,username:e.target.value})} placeholder="Username"/><input className="neo-input" value={p.student_id||''} onChange={e=>setP({...p,student_id:e.target.value})} placeholder="NIM"/><input type="file" className="neo-input" accept="image/*" onChange={e=>setFile(e.target.files?.[0]||null)}/><button className="neo-btn" onClick={save}>Simpan Profil</button></div></div>}
